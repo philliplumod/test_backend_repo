@@ -21,7 +21,7 @@ let notes = [
   }
 ]
 app.use(cors())
-// app.use(express.json()) // Middleware to parse JSON bodies
+app.use(express.static('dist')) // Middleware to parse JSON bodies
 
 // Route to serve a simple HTML page
 app.get('/', (request, response) => {
