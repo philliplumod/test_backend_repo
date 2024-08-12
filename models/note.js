@@ -5,7 +5,11 @@ const router = express.Router();
 
 // Define the note schema and model
 const noteSchema = new mongoose.Schema({
-  content: String,
+  content: {
+    type: String,
+    minLength: 5,
+    required: true
+  },
   important: Boolean,
 });
 
@@ -50,7 +54,6 @@ router.post('/api/notes', (request, response) => {
       response.json(savedNote);
     })
     .catch(error => {
-      console.error('Error saving note:', error.message);
       response.status(500).json({ error: 'Internal Server Error' });
     });
 });
